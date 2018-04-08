@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">photoselectlib</string>
+
+    <string name="string_id_all_file">所有文件</string>
+    <string name="string_id_all_picture">所有照片</string>
+    <string name="string_id_all_video">所有视频</string>
+    <string name="string_id_preview">预览</string>
+    <string name="PhotoSelectActivity_video_edit_fail">视频编辑失败</string>
+    <string name="PhotoSelectActivity_not_click_image">没有选择图片</string>
+    <string name="PhotoSelectAdapter_max_num">已达最大限制</string>
+    <string name="PhotoPreviewActivity_error">读取相册失败</string>
+    <string name="PhotoSelectActivity_dont_select_image">没有选中图片</string>
+    <string name="PhotoPreviewActivity_not_photo">没有选择照片</string>
+
+</resources>

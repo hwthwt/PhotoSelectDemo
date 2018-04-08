@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="blue_trans">#88CFE2FD</color>
+    <color name="tataplus_black">#313133</color>
+
+    <color name="white_trans_90">#90ffffff</color>
+    <color name="background_color">#F2F5FA</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="black_45_trans40">#66313133</color>
+    <color name="hint_45">#C2C6CC</color>
+
+    <color name="blue">#2FAAFF</color>
+    <color name="blue2">#CFE2FD</color>
+    <color name="tata_black_45_trans10">#19313133</color>
+    <color name="picture_placeholder_bg">#F2F5FA</color>
+
+</resources>

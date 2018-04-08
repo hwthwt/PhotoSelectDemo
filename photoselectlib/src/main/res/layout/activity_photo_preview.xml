@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black">
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_preview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/black_45_trans40">
+        <ImageView
+            android:id="@+id/iv_close"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="@dimen/basic_activity_margin"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/white_back"/>
+        <TextView
+            android:id="@+id/tv_index"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:textSize="19sp"
+            android:layout_centerInParent="true"/>
+        <ImageView
+            android:id="@+id/iv_check"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:padding="@dimen/basic_activity_margin"
+            android:layout_alignParentRight="true"
+            android:src="@mipmap/select_not" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:paddingLeft="@dimen/basic_activity_margin"
+        android:paddingRight="@dimen/basic_activity_margin"
+        android:background="@color/black_45_trans40">
+        <LinearLayout
+            android:id="@+id/ll_finish"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:orientation="horizontal"
+            android:background="@drawable/select_finish_bg"
+            android:padding="5dp">
+            <TextView
+                android:id="@+id/tv_check_num"
+                android:layout_width="25dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/round_blue"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:paddingRight="@dimen/dp2"
+                android:paddingLeft="@dimen/dp2"
+                android:text="完成"
+                android:textColor="@color/white"
+                android:textSize="18sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>
