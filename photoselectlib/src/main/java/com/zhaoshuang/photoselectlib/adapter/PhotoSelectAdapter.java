@@ -79,6 +79,7 @@ public class PhotoSelectAdapter extends RecyclerView.Adapter {
                 });
                 Glide.with(activity).clear(vh.iv_cover);
                 vh.iv_cover.setImageResource(R.drawable.camera_select);
+
                 break;
             ///录制视频
             case FileModel.TYPE_CLICK_VIDEO:
@@ -95,47 +96,57 @@ public class PhotoSelectAdapter extends RecyclerView.Adapter {
                 if(checkList.size() > 0){
                     vh.iv_not_click.setVisibility(View.VISIBLE);
                 }
+
                 break;
             case FileModel.TYPE_IMAGE:
-                vh.iv_check.setVisibility(View.VISIBLE);
                 vh.tv_time.setVisibility(View.GONE);
+
+                if(maxPhotoSize == 1){
+                    vh.iv_check.setVisibility(View.GONE);
+                }else{
+                    vh.iv_check.setVisibility(View.VISIBLE);
+                    if(checkList.contains(fileModel)){
+                        vh.iv_check.setImageResource(R.mipmap.select_check);
+                    }else{
+                        vh.iv_check.setImageResource(R.mipmap.select_not);
+                    }
+
+                    vh.iv_check.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            if(checkList.contains(fileModel)){
+                                checkList.remove(fileModel);
+                                vh.iv_check.setImageResource(R.mipmap.select_not);
+                                if(checkList.size()==0){
+                                    selectImageMode = false;
+                                    notifyDataSetChanged();
+                                }
+                            }else if(checkList.size() < maxPhotoSize){
+                                checkList.add(fileModel);
+                                vh.iv_check.setImageResource(R.mipmap.select_check);
+                                if(checkList.size() > 0 && !selectImageMode){
+                                    selectImageMode = true;
+                                    notifyDataSetChanged();
+                                }
+                            }else{
+                                ToastUtil.show(activity, activity.getString(R.string.PhotoSelectAdapter_max_num));
+                            }
+                            onCheckClickListener.onClick(view);
+                        }
+                    });
+                }
 
                 setCoverImg(vh, fileModel, position);
 
-                if(checkList.contains(fileModel)){
-                    vh.iv_check.setImageResource(R.mipmap.select_check);
-                }else{
-                    vh.iv_check.setImageResource(R.mipmap.select_not);
-                }
-
-                vh.iv_check.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        if(checkList.contains(fileModel)){
-                            checkList.remove(fileModel);
-                            vh.iv_check.setImageResource(R.mipmap.select_not);
-                            if(checkList.size()==0){
-                                selectImageMode = false;
-                                notifyDataSetChanged();
-                            }
-                        }else if(checkList.size() < maxPhotoSize){
-                            checkList.add(fileModel);
-                            vh.iv_check.setImageResource(R.mipmap.select_check);
-                            if(checkList.size() > 0 && !selectImageMode){
-                                selectImageMode = true;
-                                notifyDataSetChanged();
-                            }
-                        }else{
-                            ToastUtil.show(activity, activity.getString(R.string.PhotoSelectAdapter_max_num));
-                        }
-                        onCheckClickListener.onClick(view);
-                    }
-                });
-
                 break;
             case FileModel.TYPE_VIDEO:
-                vh.iv_check.setVisibility(View.GONE);
                 vh.tv_time.setVisibility(View.VISIBLE);
+
+                if(maxPhotoSize == 1){
+                    vh.iv_check.setVisibility(View.GONE);
+                }else{
+                    vh.iv_check.setVisibility(View.VISIBLE);
+                }
 
                 SimpleDateFormat format = new SimpleDateFormat("mm:ss");
                 String timeStr = format.format(new Date(fileModel.getDuration()));

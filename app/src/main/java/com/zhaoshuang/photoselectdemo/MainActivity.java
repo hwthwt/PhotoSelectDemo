@@ -52,6 +52,6 @@ public class MainActivity extends Activity {
 
     public void openAlbum(View v){
 
-        PhotoSelectIntent.gotoPhotoSelectActivity(this, Constant.MODE_MEDIA_ALL, Constant.MODE_LOCAL_ALL, 9);
+        PhotoSelectIntent.gotoPhotoSelectActivity(this, Constant.MODE_MEDIA_ALL, Constant.MODE_LOCAL_ALL, 1);
     }
 }

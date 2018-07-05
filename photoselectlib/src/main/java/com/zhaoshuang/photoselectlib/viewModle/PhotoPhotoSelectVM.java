@@ -18,7 +18,6 @@ import com.zhaoshuang.photoselectlib.util.Constant;
 import com.zhaoshuang.photoselectlib.util.PhotoWeakReference;
 import com.zhaoshuang.photoselectlib.view.IPhotoActivityView;
 import com.zhaoshuang.photoselectlib.view.PhotoPreviewActivity;
-import com.zhaoshuang.weixinrecorded.RecordedActivity;
 
 import java.util.ArrayList;
 
@@ -90,15 +89,17 @@ public class PhotoPhotoSelectVM implements IPhotoPhotoModel {
         public void onItemClick(View view, int position, FileModel fileModel) {
             switch (fileModel.getType()){
                 case FileModel.TYPE_CLICK_CAMERA:
-                    Intent intent = new Intent(mActivity, RecordedActivity.class);
-                    mActivity.startActivityForResult(intent, Constant.REQUEST_CAMERA_PHOTO);
                     break;
                 case FileModel.TYPE_CLICK_VIDEO:
-                    Intent intent2 = new Intent(mActivity, RecordedActivity.class);
-                    mActivity.startActivityForResult(intent2, Constant.REQUEST_CAMERA_VIDEO);
                     break;
                 case FileModel.TYPE_IMAGE:
-                    startPreviewUI(view, true, photoPhotoModel.getImageList().indexOf(fileModel));
+                    if(maxPhotoCount == 1){
+                        ArrayList<String> photoList = new ArrayList<>();
+                        photoList.add(fileModel.getFile().getAbsolutePath());
+                        mPhotoActivityView.onFinishActivityByPhoto(photoList);
+                    }else {
+                        startPreviewUI(view, true, photoPhotoModel.getImageList().indexOf(fileModel));
+                    }
                     break;
                 case FileModel.TYPE_VIDEO:
                     mPhotoActivityView.onFinishActivityByVideo(fileModel.getFile().getAbsolutePath());
